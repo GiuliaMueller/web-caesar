@@ -40,11 +40,24 @@ form = """
 def index():
     return form.format('')
 
+def is_integer(rot):
+    try:
+        int(rot)
+        return True
+    except ValueError:
+        return False
+
+
 @app.route("/", methods = ['POST', 'GET'])
 def encrypt():
-    rot=int(request.form['rot'])
-    text=request.form['text']
-    encrypt=rotate_string(text,rot)
+    if not is_integer(request.form['rot']):
+        encrypt = "Not a valid integer"
+        
+        
+    else:
+        rot=int(request.form['rot'])
+        text=request.form['text']
+        encrypt=rotate_string(text,rot)
     
     return form.format(encrypt)
 
