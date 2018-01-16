@@ -1,5 +1,6 @@
 from flask import Flask, request
 from caesar import rotate_string
+import cgi
 
 app = Flask (__name__)
 app.config['DEBUG'] = True
@@ -56,9 +57,10 @@ def encrypt():
         
     else:
         rot=int(request.form['rot'])
-        text=request.form['text']
+        text=cgi.escape(request.form['text'])
         encrypt=rotate_string(text,rot)
     
     return form.format(encrypt)
 
 app.run()
+
