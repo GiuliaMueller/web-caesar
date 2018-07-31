@@ -12,7 +12,7 @@ form = """
     <head>
         <style>
             form {{
-                background-color: #eee;
+                background-color: #0d7673;
                 padding: 20px;
                 margin: 0 auto;
                 width: 540px;
@@ -63,4 +63,3 @@ def encrypt():
     return form.format(encrypt)
 
 app.run()
-
